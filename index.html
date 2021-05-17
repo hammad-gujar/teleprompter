@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Amazon Transcribe WebSocket API - Sample Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://www.webrtc-experiment.com/hark.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="lib/prompter.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .centered {
+            margin: auto;
+            width: 70%;                
+            padding: 10px;
+            text-align: left;
+            
+            padding: 20px;
+        }
+        .dummy-transcriber-service{
+            margin-top: 30px;
+        }
+        .wordSpan{
+            margin-left: 5px;
+            color:whitesmoke;
+        }
+        .spoken {
+            color: #65656594;
+        }
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        /*effect-underline*/
+        .effect-underline {
+            border-bottom: 1px solid;
+        }
+        .items {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="sticky">
+        <video id="recorded" playsinline autoplay muted></video>
+    </div>
+
+    <div class="container">
+
+
+        <div class="centered">
+            <div>
+
+                <div id = 'scriptTextContainer' style="width: 100%; overflow: auto; font-size: 50px"></div>
+                
+                <textarea style="margin-top: 5px;" placeholder="Add text to match with transcriber and press Save" id = 'script' rows="10" cols="100"></textarea>
+
+                <button id='save' style="margin-top: 10px;" onclick="saveScript()">Save</button>
+                <button id='reset' style="margin-top: 10px;" onclick="reset()">Reset</button>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <button id="start-button" class="button-xl" title="Start Transcription">
+                    <i class="fa fa-microphone"></i> Start
+                </button>
+                <button id="stop-button" class="button-xl" title="Stop Transcription" disabled="true"><i
+                        class="fa fa-stop-circle"></i> Stop
+                </button>
+                        <button id="start">Start camera</button>
+        <button id="record" disabled>Start Recording</button>
+        <button id="play" disabled>Play</button>
+        <button id="download" disabled>Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="dist/main.js"></script>
+    <script src="lib/video.js"></script>
+    <script src="lib/ga.js"></script>
+</body>
+
+</html>
