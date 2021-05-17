@@ -2,68 +2,54 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Amazon Transcribe WebSocket API - Sample Application</title>
+    <title>Teleprompter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script src="https://www.webrtc-experiment.com/hark.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src="lib/prompter.js"></script>
     <link rel="stylesheet" href="css/main.css">
 
-    <style>
-        .centered {
-            margin: auto;
-            width: 70%;                
-            padding: 10px;
-            text-align: left;
-            
-            padding: 20px;
-        }
-        .dummy-transcriber-service{
-            margin-top: 30px;
-        }
-        .wordSpan{
-            margin-left: 5px;
-            color:whitesmoke;
-        }
-        .spoken {
-            color: #65656594;
-        }
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
-        /*effect-underline*/
-        .effect-underline {
-            border-bottom: 1px solid;
-        }
-        .items {
-            cursor: pointer;
-        }
 
-    </style>
+    <script src="lib/prompter.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://www.webrtc-experiment.com/hark.js"></script>
+
 </head>
 
-<body>
+<body><!-- Start Drawer element for configurations -->
+    <header class="header">
+      <button class="menu-toggle" aria-label="Menu toggle button">
+        <span class="hamburger"></span>
+      </button>
+      <nav class="nav">
+
+        <ul class="nav__list">
+          <li class="nav__list-item">
+            <label for="fontSizeLbl">Font Size</label>
+           <button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="+"> + </button>
+           <button id="saveStyling" onclick="changeFontSize('minus')" class="button-xl" title="-"> - </button>
+          </li>
+          <li class="nav__list-item">
+          </li>
+        </ul>
+
+      </nav>
+    </header>
+
+<!-- End Drawer element -->
     <div class="sticky">
         <video id="recorded" playsinline autoplay muted></video>
     </div>
 
+
     <div class="container">
+
 
 
         <div class="centered">
             <div>
 
-                <div id = 'scriptTextContainer' style="width: 100%; overflow: auto; font-size: 50px"></div>
+                <div id = 'scriptTextContainer' class="prompterStyling"></div>
                 
                 <textarea style="margin-top: 5px;" placeholder="Add text to match with transcriber and press Save" id = 'script' rows="10" cols="100"></textarea>
 
@@ -94,6 +80,7 @@
     <script src="dist/main.js"></script>
     <script src="lib/video.js"></script>
     <script src="lib/ga.js"></script>
+    <script src="lib/drawer.js"></script>
 </body>
 
 </html>
