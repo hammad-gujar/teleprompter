@@ -9,78 +9,193 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/main.css">
 
-
-    <script src="lib/prompter.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="https://www.webrtc-experiment.com/hark.js"></script>
 
+    <!-- Notifications -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/prism.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.css" />
+    <link rel="stylesheet" href="./assets/css/line.min.css" />
+    <link rel="stylesheet" href="./assets/css/OverlayScrollbars.min.css" />
 </head>
 
-<body><!-- Start Drawer element for configurations -->
+<body>
+
+    <div class="top stickyItem">
+        <div >
+            <button id="start-button-top" class="button-xl" title="Start Transcription">
+                <i class="fa fa-microphone"></i> Start
+            </button>
+            <button id="resume-button-top" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
+                <i class="fa fa-microphone" ></i> Resume
+            </button>
+            <button id="stop-button-top" class="button-xl" title="Stop Transcription" disabled="true"><i
+                    class="fa fa-stop-circle"></i> Stop
+            </button>
+                    <button id="start">Start camera</button>
+            <button id="record" disabled>Start Recording</button>
+            <button id="play" disabled>Play</button>
+            <button id="download" disabled>Download</button>
+        </div>
+    </div>
+    <div class="left stickyItem">
+        <div >
+            <button id="start-button-left" class="button-xl" title="Start Transcription">
+                <i class="fa fa-microphone"></i> Start
+            </button>
+            <button id="resume-button-left" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
+                <i class="fa fa-microphone" ></i> Resume
+            </button>
+            <button id="stop-button-left" class="button-xl" title="Stop Transcription" disabled="true"><i
+                    class="fa fa-stop-circle"></i> Stop
+            </button>
+                    <button id="start">Start camera</button>
+            <button id="record" disabled>Start Recording</button>
+            <button id="play" disabled>Play</button>
+            <button id="download" disabled>Download</button>
+        </div>
+    </div>
+  <!-- Start Drawer element for configurations -->
     <header class="header">
+
       <button class="menu-toggle" aria-label="Menu toggle button">
         <span class="hamburger"></span>
       </button>
       <nav class="nav">
 
-        <ul class="nav__list">
-          <li class="nav__list-item">
+        <ul class="style__list">
+          <li class="style__list-item">
             <label for="fontSizeLbl">Font Size</label>
-           <button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="+"> + </button>
-           <button id="saveStyling" onclick="changeFontSize('minus')" class="button-xl" title="-"> - </button>
+            <button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="+"> + </button>
+            <button id="saveStyling" onclick="changeFontSize('minus')" class="button-xl" title="-"> - </button>
           </li>
-          <li class="nav__list-item">
+          <li class="style__list-item">
+            <label for="fontSizeLbl">Width</label>
+            <button id="saveStyling" onclick="changeWidth('plus')" class="button-xl" title="+"> + </button>
+            <button id="saveStyling" onclick="changeWidth('minus')" class="button-xl" title="-"> - </button>
+          </li>
+          <li class="style__list-item">
+            <label for="textFont">Text Font</label>
+            <select name="textFont" id="textFont" onchange="changeTextFont('textFont')">
+              <option value="default">Default</option>
+              <option value="Circular-Loom">Circular-Loom</option>
+              <option value="Monospace">Monospace</option>
+              <option value="Roboto">Roboto</option>
+              <option value="sans-serif">sans-serif</option>
+              <option value="serif">serif</option>
+            </select>
+          </li>
+          <li class="style__list-item">
+            <label for="textColor">Text Color</label>
+            <select name="textColor" id="textColor" onchange="changeTextColor('textColor')">
+              <option value="default">Default</option>
+              <option value="White">White</option>
+              <option value="Black">Black</option>
+              <option value="Green">Green</option>
+              <option value="Cyan">Cyan</option>
+              <option value="Blue">Blue</option>
+            </select>
+          </li>
+          <li class="style__list-item">
+            <label for="backgroundColor">Text Backgroud Color</label>
+            <select name="backgroundColor" id="backgroundColor" onchange="changeTextBackgroudColor('backgroundColor')">
+              <option value="White">White</option>
+              <option value="Black">Black</option>
+              <option value="Green">Green</option>
+              <option value="Cyan">Cyan</option>
+              <option value="Blue">Blue</option>
+            </select>
+          </li>
+          <li class="style__list-item">
+            <label for="buttonsPostion">Controls Position</label>
+            <select name="buttonsPostion" id="buttonsPostion" onchange="changeControllsPosition('buttonsPostion')">
+              <option value="bottom">Bottom</option>
+              <option value="top">Top</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
           </li>
         </ul>
 
       </nav>
     </header>
+            
 
 <!-- End Drawer element -->
-    <div class="sticky">
-        <video id="recorded" playsinline autoplay muted></video>
-    </div>
 
 
     <div class="container">
 
 
+<!--       <div class="videoItem stickyItem">
+          <video id="recorded" playsinline autoplay muted></video>
+      </div> -->
 
-        <div class="centered">
-            <div>
+      <div class="centered" id = 'centered'>
+          <div>
+              <div id = 'scriptTextContainer' class="prompterStyling"></div>                
+              <textarea style="margin-top: 5px;" placeholder="Add text for Teleprompter" id = 'script' rows="10" cols="100"></textarea>
+              <button id='save' style="margin-top: 10px;" title="Save the script for Teleprompter" onclick="saveScript()">Save</button>
+              <button id='clear' style="margin-top: 10px;" title="Clear the Teleprompter Text" onclick="clearPrompter()">Clear</button>
+              <button id='reset' style="margin-top: 10px;" title="Reset Teleprompter" onclick="reset()">Reset</button>
+          </div>
 
-                <div id = 'scriptTextContainer' class="prompterStyling"></div>
-                
-                <textarea style="margin-top: 5px;" placeholder="Add text to match with transcriber and press Save" id = 'script' rows="10" cols="100"></textarea>
-
-                <button id='save' style="margin-top: 10px;" onclick="saveScript()">Save</button>
-                <button id='reset' style="margin-top: 10px;" onclick="reset()">Reset</button>
-            </div>
-
-        </div>
+      </div>
 
 
-        <div class="row">
-            <div class="col">
-                <button id="start-button" class="button-xl" title="Start Transcription">
-                    <i class="fa fa-microphone"></i> Start
-                </button>
-                <button id="stop-button" class="button-xl" title="Stop Transcription" disabled="true"><i
-                        class="fa fa-stop-circle"></i> Stop
-                </button>
-                        <button id="start">Start camera</button>
-        <button id="record" disabled>Start Recording</button>
-        <button id="play" disabled>Play</button>
-        <button id="download" disabled>Download</button>
-            </div>
+    </div>
+
+    <div class=" right">
+        <div >
+            <button id="start-button-right" class="button-xl" title="Start Transcription">
+                <i class="fa fa-microphone"></i> Start
+            </button>
+            <button id="resume-button-right" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
+                <i class="fa fa-microphone" ></i> Resume
+            </button>
+            <button id="stop-button-right" class="button-xl" title="Stop Transcription" disabled="true"><i
+                    class="fa fa-stop-circle"></i> Stop
+            </button>
+                    <button id="start">Start camera</button>
+            <button id="record" disabled>Start Recording</button>
+            <button id="play" disabled>Play</button>
+            <button id="download" disabled>Download</button>
         </div>
     </div>
+
+    <footer class=" bottom stickyItem">
+      <div >
+          <button id="start-button-bottom" class="button-xl" title="Start Transcription">
+              <i class="fa fa-microphone"></i> Start
+          </button>
+          <button id="resume-button-bottom" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
+              <i class="fa fa-microphone" ></i> Resume
+          </button>
+          <button id="stop-button-bottom" class="button-xl" title="Stop Transcription" disabled="true"><i
+                  class="fa fa-stop-circle"></i> Stop
+          </button>
+                  <button id="start">Start camera</button>
+          <button id="record" disabled>Start Recording</button>
+          <button id="play" disabled>Play</button>
+          <button id="download" disabled>Download</button>
+      </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="dist/main.js"></script>
     <script src="lib/video.js"></script>
     <script src="lib/ga.js"></script>
     <script src="lib/drawer.js"></script>
+    <script src="lib/prompter.js"></script>
+
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.js"></script>
+    <!-- <script src="../dist/simple-notify.min.js"></script> -->
+    <script src="./assets/js/prism.js"></script>
+    <script src="./assets/js/OverlayScrollbars.min.js"></script>
 </body>
 
 </html>
