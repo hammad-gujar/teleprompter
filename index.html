@@ -22,7 +22,6 @@
 </head>
 
 <body>
-
     <div class="top stickyItem">
         <div >
             <button id="start-button-top" class="button-xl" title="Start Transcription">
@@ -65,7 +64,19 @@
       </button>
       <nav class="nav">
 
+
+
+
         <ul class="style__list">
+          <li class="style__list-item">
+            <label for="audioSource">Audio input source: </label>
+            <select id="audioSource"></select>
+          </li>
+
+<!--     <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div> -->
+
           <li class="style__list-item">
             <label for="fontSizeLbl">Font Size</label>
             <button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="+"> + </button>
@@ -184,6 +195,8 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="lib/adapter.js"></script>
+<script src="lib/devices.js" async></script>
     <script src="dist/main.js"></script>
     <script src="lib/video.js"></script>
     <script src="lib/ga.js"></script>
