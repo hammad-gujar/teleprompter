@@ -66,6 +66,9 @@ video#gumVideo {
 .spoken {
     color: #65656594;
 }
+.highlite {
+    color: #ff8d00
+}
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
