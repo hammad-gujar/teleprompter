@@ -19,10 +19,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="./assets/css/line.min.css" />
     <link rel="stylesheet" href="./assets/css/OverlayScrollbars.min.css" />
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
 </head>
 
 <body>
-    <div class="top stickyItem">
+<!--     <div class="top stickyItem">
         <div >
             <button id="start-button-top" class="button-xl" title="Start Transcription">
                 <i class="fa fa-microphone"></i> Start
@@ -55,7 +62,7 @@
             <button id="play" disabled>Play</button>
             <button id="download" disabled>Download</button>
         </div>
-    </div>
+    </div> -->
   <!-- Start Drawer element for configurations -->
     <header class="header">
 
@@ -119,7 +126,7 @@
               <option value="Blue">Blue</option>
             </select>
           </li>
-          <li class="style__list-item">
+<!--           <li class="style__list-item">
             <label for="buttonsPostion">Controls Position</label>
             <select name="buttonsPostion" id="buttonsPostion" onchange="changeControllsPosition('buttonsPostion')">
               <option value="bottom">Bottom</option>
@@ -127,7 +134,7 @@
               <option value="left">Left</option>
               <option value="right">Right</option>
             </select>
-          </li>
+          </li> -->
         </ul>
 
       </nav>
@@ -158,7 +165,7 @@
 
     </div>
 
-    <div class=" right">
+    <div class="right" id="draggable">
         <div >
             <button id="start-button-right" class="button-xl" title="Start Transcription">
                 <i class="fa fa-microphone"></i> Start
@@ -173,10 +180,11 @@
             <button id="record" disabled>Start Recording</button>
             <button id="play" disabled>Play</button>
             <button id="download" disabled>Download</button>
+            <span class="statusMessage" id="statusMessage">Stopped</span>
         </div>
     </div>
 
-    <footer class=" bottom stickyItem">
+<!--     <footer class=" bottom ui-widget-content" id="draggable">
       <div >
           <button id="start-button-bottom" class="button-xl" title="Start Transcription">
               <i class="fa fa-microphone"></i> Start
@@ -192,11 +200,11 @@
           <button id="play" disabled>Play</button>
           <button id="download" disabled>Download</button>
       </div>
-    </footer>
+    </footer> -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="lib/adapter.js"></script>
-<script src="lib/devices.js" async></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="lib/adapter.js"></script>
+    <script src="lib/devices.js" async></script>
     <script src="dist/main.js"></script>
     <script src="lib/video.js"></script>
     <script src="lib/ga.js"></script>

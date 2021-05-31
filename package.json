@@ -27,10 +27,16 @@
   "dependencies": {
     "@aws-sdk/eventstream-marshaller": "0.1.0-preview.2",
     "@aws-sdk/util-utf8-node": "0.1.0-preview.1",
+    "async": "^3.2.0",
     "browserify": "^16.5.1",
+    "ffi-napi": "^4.0.3",
     "local-web-server": "^3.0.7",
+    "mic": "^2.1.2",
     "microphone-stream": "^5.0.1",
-    "query-string": "^6.12.1"
+    "query-string": "^6.12.1",
+    "ref-napi": ">=2.0.0",
+    "vosk": "^0.3.27",
+    "wav": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
