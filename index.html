@@ -167,20 +167,27 @@
 
     <div class="right" id="draggable">
         <div >
-            <button id="start-button-right" class="button-xl" title="Start Transcription">
+          <div>
+            <span class="response" id="response"></span>
+            <button id="start-button-right" class="button-xl" title="Start Teleprompter">
                 <i class="fa fa-microphone"></i> Start
             </button>
-            <button id="resume-button-right" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
+            <button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
                 <i class="fa fa-microphone" ></i> Resume
             </button>
-            <button id="stop-button-right" class="button-xl" title="Stop Transcription" disabled="true"><i
+            <button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
                     class="fa fa-stop-circle"></i> Stop
+          </div>
+            
+          <div>
             </button>
                     <button id="start">Start camera</button>
             <button id="record" disabled>Start Recording</button>
             <button id="play" disabled>Play</button>
             <button id="download" disabled>Download</button>
+
             <span class="statusMessage" id="statusMessage">Stopped</span>
+          </div>
         </div>
     </div>
 
