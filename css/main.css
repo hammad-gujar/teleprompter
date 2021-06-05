@@ -243,36 +243,6 @@ h1 {
 
 
 /*Controll Bar*/
-.top {
-    display: none;
-    justify-content: center;
-    width: 100%;
-    top: 0;
-    background-color: #9eacaf;
-    padding: 10px;
-    border-bottom: thick solid #d82121
-}
-
-.bottom {
-    display: flex;
-    justify-content: center;
-    background-color: #9eacaf;
-    padding: 0px;
-    border-top: thick solid #d82121;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-.left {
-    width: 120px;
-    display: none;
-    top: 25%;
-    background-color: #9eacaf;
-    padding: 10px;
-    border-bottom: thick solid #d82121
-}
 
 .right {
     position: fixed;
@@ -281,7 +251,16 @@ h1 {
     top: 25%;
     background-color: #9eacaf;
     padding: 10px;
-    border-bottom: thick solid #d82121
+    border-bottom: thick solid #d82121;
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.right:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
 .stickyItem {  
     position: -webkit-sticky;
@@ -294,4 +273,45 @@ h1 {
 }
 .statusMessage {
   margin-left: 10%;
+}
+
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

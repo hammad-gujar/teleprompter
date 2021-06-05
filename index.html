@@ -29,40 +29,21 @@
 </head>
 
 <body>
-<!--     <div class="top stickyItem">
-        <div >
-            <button id="start-button-top" class="button-xl" title="Start Transcription">
-                <i class="fa fa-microphone"></i> Start
-            </button>
-            <button id="resume-button-top" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
-                <i class="fa fa-microphone" ></i> Resume
-            </button>
-            <button id="stop-button-top" class="button-xl" title="Stop Transcription" disabled="true"><i
-                    class="fa fa-stop-circle"></i> Stop
-            </button>
-                    <button id="start">Start camera</button>
-            <button id="record" disabled>Start Recording</button>
-            <button id="play" disabled>Play</button>
-            <button id="download" disabled>Download</button>
-        </div>
-    </div>
-    <div class="left stickyItem">
-        <div >
-            <button id="start-button-left" class="button-xl" title="Start Transcription">
-                <i class="fa fa-microphone"></i> Start
-            </button>
-            <button id="resume-button-left" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
-                <i class="fa fa-microphone" ></i> Resume
-            </button>
-            <button id="stop-button-left" class="button-xl" title="Stop Transcription" disabled="true"><i
-                    class="fa fa-stop-circle"></i> Stop
-            </button>
-                    <button id="start">Start camera</button>
-            <button id="record" disabled>Start Recording</button>
-            <button id="play" disabled>Play</button>
-            <button id="download" disabled>Download</button>
-        </div>
-    </div> -->
+
+<!-- The Modal -->
+<div id="micModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>    
+    <label for="audioSource">Please Select Audio Input Source: </label>
+    <select id="audioSource"></select>
+    <button id="saveMicPrefrences" onclick="saveMicPrefrences()" class="button-xl" title="Save Prefrences"> Save </button>
+          
+  </div>
+
+</div>
+  
   <!-- Start Drawer element for configurations -->
     <header class="header">
 
@@ -70,16 +51,12 @@
         <span class="hamburger"></span>
       </button>
       <nav class="nav">
-
-
-
-
         <ul class="style__list">
           <li class="style__list-item">
-            <label for="audioSource">Audio input source: </label>
-            <select id="audioSource"></select>
+            <button id="openMicPrefrences" onclick="openMicModal()" class="button-xl" title="Change Microphone Prefrences">Show Mic Options</button>
+   
           </li>
-
+          
 <!--     <div class="select">
         <label for="videoSource">Video source: </label><select id="videoSource"></select>
     </div> -->
@@ -126,15 +103,6 @@
               <option value="Blue">Blue</option>
             </select>
           </li>
-<!--           <li class="style__list-item">
-            <label for="buttonsPostion">Controls Position</label>
-            <select name="buttonsPostion" id="buttonsPostion" onchange="changeControllsPosition('buttonsPostion')">
-              <option value="bottom">Bottom</option>
-              <option value="top">Top</option>
-              <option value="left">Left</option>
-              <option value="right">Right</option>
-            </select>
-          </li> -->
         </ul>
 
       </nav>
@@ -145,12 +113,6 @@
 
 
     <div class="container">
-
-
-<!--       <div class="videoItem stickyItem">
-          <video id="recorded" playsinline autoplay muted></video>
-      </div> -->
-
       <div class="centered" id = 'centered'>
           <div>
               <div id = 'scriptTextContainer' class="prompterStyling"></div>                
@@ -159,10 +121,7 @@
               <button id='clear' style="margin-top: 10px;" title="Clear the Teleprompter Text" onclick="clearPrompter()">Clear</button>
               <button id='reset' style="margin-top: 10px;" title="Reset Teleprompter" onclick="reset()">Reset</button>
           </div>
-
       </div>
-
-
     </div>
 
     <div class="right" id="draggable">
@@ -177,8 +136,7 @@
             </button>
             <button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
                     class="fa fa-stop-circle"></i> Stop
-          </div>
-            
+          </div>            
           <div>
             </button>
                     <button id="start">Start camera</button>
@@ -191,24 +149,6 @@
         </div>
     </div>
 
-<!--     <footer class=" bottom ui-widget-content" id="draggable">
-      <div >
-          <button id="start-button-bottom" class="button-xl" title="Start Transcription">
-              <i class="fa fa-microphone"></i> Start
-          </button>
-          <button id="resume-button-bottom" class="button-xl" title="Resume Transcription" onclick="resumePrompter()" disabled>
-              <i class="fa fa-microphone" ></i> Resume
-          </button>
-          <button id="stop-button-bottom" class="button-xl" title="Stop Transcription" disabled="true"><i
-                  class="fa fa-stop-circle"></i> Stop
-          </button>
-                  <button id="start">Start camera</button>
-          <button id="record" disabled>Start Recording</button>
-          <button id="play" disabled>Play</button>
-          <button id="download" disabled>Download</button>
-      </div>
-    </footer> -->
-
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <script src="lib/adapter.js"></script>
     <script src="lib/devices.js" async></script>
@@ -216,6 +156,7 @@
     <script src="lib/video.js"></script>
     <script src="lib/ga.js"></script>
     <script src="lib/drawer.js"></script>
+    <script src="lib/smooth-scroll.polyfills.js"></script>
     <script src="lib/prompter.js"></script>
 
 
