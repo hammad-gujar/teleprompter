@@ -107,32 +107,37 @@
 	</div>
 
   	<!--  Dragable Controls Start -->
-	<div class="right" id="draggable">
-		<span class="response" id="response"></span>
-		<button id="start-button-right" class="button-xl" title="Start Teleprompter">
-		<i class="fa fa-microphone"></i> Start
-		</button>
-		<button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
-		<i class="fa fa-microphone" ></i> Resume
-		</button>
-		<button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
-			class="fa fa-stop-circle"></i> Stop
-		</button>
-		<hr>
-		<button id="start">Start camera</button>
-		<button id="record" disabled>Start Recording</button>
-		<button id="play" disabled>Play</button>
-		<button id="download" disabled>Download</button>
-		<hr>
-		<button id='save' style="margin-top: 10px;" title="Save the script for Teleprompter" onclick="saveScript()">Save Script</button>
-		<button id='clear' style="margin-top: 10px;" title="Clear the Teleprompter Text" onclick="clearPrompter()">Clear Script</button>
-		<button id='reset' style="margin-top: 10px;" title="Reset Teleprompter" onclick="reset()">Reset Prompter</button>
-		<hr>
-		<button rel='menu-toggle'>
-		Prompter Configurations
-		</button>
-		<hr>
-		<span class="statusMessage" id="statusMessage">Stopped</span>
+	<div class="draggable" id="draggable">
+		<div id="myProgress">
+			<div id="myBar"> Detecting...</div>
+		</div>
+		<div class="right">
+			<span class="response" id="response"></span>
+			<button id="start-button-right" class="button-xl" title="Start Teleprompter">
+			<i class="fa fa-microphone"></i> Start
+			</button>
+			<button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
+			<i class="fa fa-microphone" ></i> Resume
+			</button>
+			<button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
+				class="fa fa-stop-circle"></i> Stop
+			</button>
+			<hr>
+			<button id="start">Start camera</button>
+			<button id="record" disabled>Start Recording</button>
+			<button id="play" disabled>Play</button>
+			<button id="download" disabled>Download</button>
+			<hr>
+			<button id='save' style="margin-top: 10px;" title="Save the script for Teleprompter" onclick="saveScript()">Save Script</button>
+			<button id='clear' style="margin-top: 10px;" title="Clear the Teleprompter Text" onclick="clearPrompter()">Clear Script</button>
+			<button id='reset' style="margin-top: 10px;" title="Reset Teleprompter" onclick="reset()">Reset Prompter</button>
+			<hr>
+			<button rel='menu-toggle'>
+			Prompter Configurations
+			</button>
+			<hr>
+			<span class="statusMessage" id="statusMessage">Stopped</span>
+		</div>
 	</div>
 
   <!--  Dragable Controls End -->

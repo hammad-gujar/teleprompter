@@ -95,21 +95,35 @@ input[type=text], select, textarea {
 }
 
 /*Controll Bar*/
+.draggable {
+
+  position: fixed;
+  top: 15%;
+  right: 0;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  border-bottom: thick solid #d82121;
+  width: 120px;
+}
+#myProgress {
+  width: 120px;
+  background-color: grey;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
 
 .right {
-    position: fixed;
-    right: 0;
-    width: 120px;
-    top: 15%;
     background-color: #9eacaf;
     padding: 10px;
-    border-bottom: thick solid #d82121;
-    cursor: move;
-    cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-}
-.right:active {
+  }
+
+.draggable:active {
   cursor: grabbing;
   cursor: -moz-grabbing;
   cursor: -webkit-grabbing;
@@ -248,3 +262,9 @@ li {
   margin-top: 10%;
 }
 /* drawer end */
+
+
+/* progress Bar */
+
+
+/* progress bar end */
