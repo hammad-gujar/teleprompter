@@ -1,233 +1,153 @@
 <!DOCTYPE html>
-
 <head>
-    <meta charset="utf-8">
-    <title>Teleprompter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/main.css">
-
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script src="https://www.webrtc-experiment.com/hark.js"></script>
-
-    <!-- Notifications -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/prism.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.css" />
-    <link rel="stylesheet" href="./assets/css/line.min.css" />
-    <link rel="stylesheet" href="./assets/css/OverlayScrollbars.min.css" />
-
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-
+	<meta charset="utf-8">
+	<title>Teleprompter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+	<script src="https://www.webrtc-experiment.com/hark.js"></script>
+	<!-- Notifications -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="./assets/css/prism.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.css" />
+	<link rel="stylesheet" href="./assets/css/line.min.css" />
+	<link rel="stylesheet" href="./assets/css/OverlayScrollbars.min.css" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
 </head>
-
 <body>
 
-<!-- The Modal -->
-<div id="micModal" class="modal">
+	<!-- Start Modal -->
+	<div id="micModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>    
+			<label for="audioSource">Please Select Audio Input Source: </label>
+			<select id="audioSource"></select>
+			<button id="saveMicPrefrences" onclick="saveMicPrefrences()" class="button-xl" title="Save Prefrences"> Save </button>
+		</div>
+	</div>
+	<!--End Modal -->
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>    
-    <label for="audioSource">Please Select Audio Input Source: </label>
-    <select id="audioSource"></select>
-    <button id="saveMicPrefrences" onclick="saveMicPrefrences()" class="button-xl" title="Save Prefrences"> Save </button>
-          
-  </div>
-
-</div>
-  
-  <!-- Start Drawer element for configurations -->
-    <header class="header">
-
-      <button class="menu-toggle" aria-label="Menu toggle button">
-        <span class="hamburger"></span>
-      </button>
-      <nav class="nav">
-        <ul class="style__list">
-          <li class="style__list-item">
-            <button id="openMicPrefrences" style = "width: 70%; margin-left:10%" onclick="openMicModal()" class="button-xl" title="Change Microphone Prefrences">Show Mic Options</button>
-   
-          </li>
-          
-<!--     <div class="select">
-        <label for="videoSource">Video source: </label><select id="videoSource"></select>
-    </div> -->
-
-          <li class="style__list-item">
-            <label for="fontSizeLbl">Font Size</label>
-            <div>
-              <button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="Increse Font Size"> + </button>
-              <button id="saveStyling" onclick="changeFontSize('minus')" class="button-xl" title="Decrease Font Size"> - </button>
-            </div>
-            </li>
-          <li class="style__list-item">
-            <label for="fontSizeLbl">Width</label>
-            <div>
-              <button id="saveStyling" onclick="changeWidth('plus')" class="button-xl" title="Increse Prompter Width"> + </button>
-              <button id="saveStyling" onclick="changeWidth('minus')" class="button-xl" title="Decrease Prompter Width"> - </button>
-            </div>
-            </li>
-          <li class="style__list-item">
-            <label for="textFont">Text Font</label>
-            <select name="textFont" id="textFont" onchange="changeTextFont('textFont')">
-              <option value="default">Default</option>
-              <option value="Circular-Loom">Circular-Loom</option>
-              <option value="Monospace">Monospace</option>
-              <option value="Roboto">Roboto</option>
-              <option value="sans-serif">sans-serif</option>
-              <option value="serif">serif</option>
-            </select>
-          </li>
-          <li class="style__list-item">
-            <label for="textColor">Text Color</label>
-            <select name="textColor" id="textColor" onchange="changeTextColor('textColor')">
-              <option value="default">Default</option>
-              <option value="White">White</option>
-              <option value="Black">Black</option>
-              <option value="Green">Green</option>
-              <option value="Cyan">Cyan</option>
-              <option value="Blue">Blue</option>
-            </select>
-          </li>
-          
-          <li class="style__list-item">
-            <label for="backgroundColor">Text Backgroud Color</label>
-            <select name="backgroundColor" id="backgroundColor" onchange="changeTextBackgroudColor('backgroundColor')">
-              <option value="White">White</option>
-              <option value="Black">Black</option>
-              <option value="Green">Green</option>
-              <option value="Cyan">Cyan</option>
-              <option value="Blue">Blue</option>
-            </select>
-          </li>
-        </ul>
-        <hr>
-        
-        <ul class="style__list">
-          <li class="style__list-item">
-            <button id="openMicPrefrences" style = "width: 70%; margin-left:10%" onclick="openMicModal()" class="button-xl" title="Change Microphone Prefrences">Show Mic Options</button>
-   
-          </li>
-          
-<!--     <div class="select">
-        <label for="videoSource">Video source: </label><select id="videoSource"></select>
-    </div> -->
-
-          <li class="style__list-item">
-            <label for="fontSizeLbl">Font Size</label>
-            <div>
-              <button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="Increse Font Size"> + </button>
-              <button id="saveStyling" onclick="changeFontSize('minus')" class="button-xl" title="Decrease Font Size"> - </button>
-            </div>
-            </li>
-          <li class="style__list-item">
-            <label for="fontSizeLbl">Width</label>
-            <div>
-              <button id="saveStyling" onclick="changeWidth('plus')" class="button-xl" title="Increse Prompter Width"> + </button>
-              <button id="saveStyling" onclick="changeWidth('minus')" class="button-xl" title="Decrease Prompter Width"> - </button>
-            </div>
-            </li>
-          <li class="style__list-item">
-            <label for="textFont">Text Font</label>
-            <select name="textFont" id="textFont" onchange="changeTextFont('textFont')">
-              <option value="default">Default</option>
-              <option value="Circular-Loom">Circular-Loom</option>
-              <option value="Monospace">Monospace</option>
-              <option value="Roboto">Roboto</option>
-              <option value="sans-serif">sans-serif</option>
-              <option value="serif">serif</option>
-            </select>
-          </li>
-          <li class="style__list-item">
-            <label for="textColor">Text Color</label>
-            <select name="textColor" id="textColor" onchange="changeTextColor('textColor')">
-              <option value="default">Default</option>
-              <option value="White">White</option>
-              <option value="Black">Black</option>
-              <option value="Green">Green</option>
-              <option value="Cyan">Cyan</option>
-              <option value="Blue">Blue</option>
-            </select>
-          </li>
-          
-          <li class="style__list-item">
-            <label for="backgroundColor">Text Backgroud Color</label>
-            <select name="backgroundColor" id="backgroundColor" onchange="changeTextBackgroudColor('backgroundColor')">
-              <option value="White">White</option>
-              <option value="Black">Black</option>
-              <option value="Green">Green</option>
-              <option value="Cyan">Cyan</option>
-              <option value="Blue">Blue</option>
-            </select>
-          </li>
-        </ul>
-      </nav>
-    </header>
-            
-
-<!-- End Drawer element -->
+	<!--  drawer Start-->
+	<header></header>
+	<nav class='site-menu' >
+		<button rel='menu-toggle'>
+		Close
+		</button>
+		<hr>
+		<ul class="style__list">
+			<li class="style__list-item">
+				<button id="openMicPrefrences" style = "width: 70%;" onclick="openMicModal()" class="button-xl" title="Change Microphone Prefrences">Show Mic Options</button>
+			</li>
+			<li class="style__list-item">
+				<label for="fontSizeLbl">Font Size</label>
+				<div>
+					<button id="saveStyling" onclick="changeFontSize('plus')" class="button-xl" title="Increse Font Size"> + </button>
+					<button id="saveStyling" onclick="changeFontSize('minus')" class="button-xl" title="Decrease Font Size"> - </button>
+				</div>
+			</li>
+			<li class="style__list-item">
+				<label for="fontSizeLbl">Width</label>
+				<div>
+					<button id="saveStyling" onclick="changeWidth('plus')" class="button-xl" title="Increse Prompter Width"> + </button>
+					<button id="saveStyling" onclick="changeWidth('minus')" class="button-xl" title="Decrease Prompter Width"> - </button>
+				</div>
+			</li>
+			<li class="style__list-item">
+				<label for="textFont">Text Font</label>
+				<select name="textFont" id="textFont" onchange="changeTextFont('textFont')">
+					<option value="default">Default</option>
+					<option value="Circular-Loom">Circular-Loom</option>
+					<option value="Monospace">Monospace</option>
+					<option value="Roboto">Roboto</option>
+					<option value="sans-serif">sans-serif</option>
+					<option value="serif">serif</option>
+				</select>
+			</li>
+			<li class="style__list-item">
+				<label for="textColor">Text Color</label>
+				<select name="textColor" id="textColor" onchange="changeTextColor('textColor')">
+					<option value="default">Default</option>
+					<option value="White">White</option>
+					<option value="Black">Black</option>
+					<option value="Green">Green</option>
+					<option value="Cyan">Cyan</option>
+					<option value="Blue">Blue</option>
+				</select>
+			</li>
+			<li class="style__list-item">
+				<label for="backgroundColor">Text Backgroud Color</label>
+				<select name="backgroundColor" id="backgroundColor" onchange="changeTextBackgroudColor('backgroundColor')">
+					<option value="White">White</option>
+					<option value="Black">Black</option>
+					<option value="Green">Green</option>
+					<option value="Cyan">Cyan</option>
+					<option value="Blue">Blue</option>
+				</select>
+			</li>
+		</ul>
+	</nav>
+	<!--  drawer end -->
 
 
-    <div class="container">
-      <div class="centered" id = 'centered'>
-          <div>
-              <div id = 'scriptTextContainer' class="prompterStyling"></div>                
-              <textarea style="margin-top: 5px;" placeholder="Add text for Teleprompter" id = 'script' rows="10" cols="100"></textarea>
-              <button id='save' style="margin-top: 10px;" title="Save the script for Teleprompter" onclick="saveScript()">Save</button>
-              <button id='clear' style="margin-top: 10px;" title="Clear the Teleprompter Text" onclick="clearPrompter()">Clear</button>
-              <button id='reset' style="margin-top: 10px;" title="Reset Teleprompter" onclick="reset()">Reset</button>
-          </div>
-      </div>
-    </div>
+	<div class="container">
+		<div class="centered" id = 'centered'>
+			<div>
+				<div id = 'scriptTextContainer' class="prompterStyling"></div>
+				<textarea style="margin-top: 5px;" placeholder="Add text for Teleprompter" id = 'script' rows="10" cols="100"></textarea>
+			</div>
+		</div>
+	</div>
 
-    <div class="right" id="draggable">
-        <div >
-          <div>
-            <span class="response" id="response"></span>
-            <button id="start-button-right" class="button-xl" title="Start Teleprompter">
-                <i class="fa fa-microphone"></i> Start
-            </button>
-            <button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
-                <i class="fa fa-microphone" ></i> Resume
-            </button>
-            <button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
-                    class="fa fa-stop-circle"></i> Stop
-          </div>            
-          <div>
-            </button>
-                    <button id="start">Start camera</button>
-            <button id="record" disabled>Start Recording</button>
-            <button id="play" disabled>Play</button>
-            <button id="download" disabled>Download</button>
+  	<!--  Dragable Controls Start -->
+	<div class="right" id="draggable">
+		<span class="response" id="response"></span>
+		<button id="start-button-right" class="button-xl" title="Start Teleprompter">
+		<i class="fa fa-microphone"></i> Start
+		</button>
+		<button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
+		<i class="fa fa-microphone" ></i> Resume
+		</button>
+		<button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
+			class="fa fa-stop-circle"></i> Stop
+		</button>
+		<hr>
+		<button id="start">Start camera</button>
+		<button id="record" disabled>Start Recording</button>
+		<button id="play" disabled>Play</button>
+		<button id="download" disabled>Download</button>
+		<hr>
+		<button id='save' style="margin-top: 10px;" title="Save the script for Teleprompter" onclick="saveScript()">Save Script</button>
+		<button id='clear' style="margin-top: 10px;" title="Clear the Teleprompter Text" onclick="clearPrompter()">Clear Script</button>
+		<button id='reset' style="margin-top: 10px;" title="Reset Teleprompter" onclick="reset()">Reset Prompter</button>
+		<hr>
+		<button rel='menu-toggle'>
+		Prompter Configurations
+		</button>
+		<hr>
+		<span class="statusMessage" id="statusMessage">Stopped</span>
+	</div>
 
-            <span class="statusMessage" id="statusMessage">Stopped</span>
-          </div>
-        </div>
-    </div>
+  <!--  Dragable Controls End -->
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <script src="lib/adapter.js"></script>
-    <script src="lib/devices.js" async></script>
-    <script src="dist/main.js"></script>
-    <script src="lib/video.js"></script>
-    <script src="lib/ga.js"></script>
-    <script src="lib/drawer.js"></script>
-    <script src="lib/prompter.js"></script>
-
-
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.js"></script>
-    <!-- <script src="../dist/simple-notify.min.js"></script> -->
-    <script src="./assets/js/prism.js"></script>
-    <script src="./assets/js/OverlayScrollbars.min.js"></script>
+	<script src="lib/adapter.js"></script>
+	<script src="lib/devices.js" async></script>
+	<script src="dist/main.js"></script>
+	<script src="lib/video.js"></script>
+	<script src="lib/ga.js"></script>
+	<script src="lib/drawer.js"></script>
+	<script src="lib/prompter.js"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.js"></script>
+	<!-- <script src="../dist/simple-notify.min.js"></script> -->
+	<script src="./assets/js/prism.js"></script>
+	<script src="./assets/js/OverlayScrollbars.min.js"></script>
 </body>
-
 </html>

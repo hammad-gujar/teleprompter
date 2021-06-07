@@ -90,157 +90,9 @@ input[type=text], select, textarea {
 .prompterStyling {
   width: 100%;
   overflow: auto;
-  font-size: 50px
+  font-size: 50px;
+  border-radius: 10px;
 }
-
-
-/*Drwaer Styling Start*/
-
-
-:root {
-  font-size: calc(0.5em + 1vw);
-
-  --clr-cream: #f6e7c1;
-  --clr-light-orange: #ffa25b;
-  --clr-orange: #f4722b;
-  --clr-dark: #3e3e3e;
-  --clr-white: #fff;
-
-  --fw-regular: 400;
-  --fw-bold: 700;
-
-  --fs-heading-1: 3em;
-  --fs-heading-2: 1.5em;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1em;
-}
-
-h1 {
-  margin: 0;
-}
-
-
-.menu-toggle {
-  padding: 1.5em;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  z-index: 2;
-}
-
-.hamburger {
-  display: block;
-  position: relative;
-}
-
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-  width: 2.5em;
-  height: 2px;
-  background-color: var(--clr-orange);
-}
-
-.hamburger::before,
-.hamburger::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  transition: transform 300ms ease-in-out;
-}
-
-.hamburger::before {
-  top: 8px;
-}
-
-.hamburger::after {
-  bottom: 8px;
-}
-
-.nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  transform: translateX(100%);
-  transition: transform 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-}
-
-.style__list {
-  list-style-type: none;
-  padding: 0;
-  display: inline-grid;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  width: 23%;
-  background-color: #ded9d9;
-  margin: 0;
-}
-
-.nav__link {
-  text-decoration: none;
-  padding: 1em 2em;
-  background-color: var(--clr-dark);
-  color: var(--clr-white);
-  font-size: var(--fs-heading-2);
-  font-weight: var(--fw-bold);
-  padding: 0;
-  margin: 0;
-}
-
-.nav__link:hover {
-  text-decoration: underline;
-  color: var(--clr-light-orange);
-}
-
-.nav__link:focus {
-  color: var(--clr-orange);
-}
-
-.nav-open .nav {
-  transform: translate(0);
-}
-
-.nav-open .menu-toggle {
-  position: fixed;
-}
-
-.nav-open .hamburger {
-  transform: rotate(45deg);
-}
-
-.nav-open .hamburger::before {
-  transform: rotate(90deg) translateX(-8px);
-}
-
-.nav-open .hamburger::after {
-  opacity: 0;
-}
-
-/*drawer styling end*/
-
 
 /*Controll Bar*/
 
@@ -248,7 +100,7 @@ h1 {
     position: fixed;
     right: 0;
     width: 120px;
-    top: 25%;
+    top: 15%;
     background-color: #9eacaf;
     padding: 10px;
     border-bottom: thick solid #d82121;
@@ -315,3 +167,84 @@ h1 {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* drawer start */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.site-menu {
+  background-color: rgb(158 172 175);;
+  color: black;
+  font-weight: 600;
+  padding: 20px;
+  /* */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* */
+  width: 100%;
+  max-width: 300px;
+  /* */
+  transform: translate(-298px); /* just to show a little */
+  transition: .2s;
+  /* */
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* */
+  background-color: rgb(158 172 175);;
+  min-height: 100vh;
+
+  overflow: auto;
+  height: 100%;
+}
+
+body.menu-open .site-menu {
+  transform: translate(0);
+  background-color: rgb(158 172 175);;
+}
+
+header {
+  /* overly generic - but just for now */
+  position: sticky;
+  top: 0;
+  /* */
+  padding: 20px;
+}
+
+section {
+  /* overly generic - but just for now */
+  min-height: 110vh;
+  padding: 20px;
+  /* padding-top: 120px; */ /* quick and dirty to offset the header */
+  scroll-margin-top: 100px; /* cool new way */ /* https://caniuse.com/#search=scroll-margin-top */
+}
+
+section:nth-of-type(odd) {
+  /* overly generic - but just for now */
+  background-color: wheat;
+}
+
+
+.style__list {
+  list-style-type: none;
+}
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
+  margin: 5px;
+}
+li {
+  margin-top: 10%;
+}
+/* drawer end */
