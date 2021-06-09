@@ -92,6 +92,26 @@
 					<option value="Blue">Blue</option>
 				</select>
 			</li>
+
+			<hr>
+			<h4>Voice Commands</h4>
+
+			
+			<li class="style__list-item">
+				<label for="startCommand">Start</label>
+				<input id="startCommand" placeholder="Enter a Word for Start Command" value="Green"/>
+			</li>			
+			<li class="style__list-item">
+				<label for="resumeCommand">Resume</label>
+				<input id="resumeCommand" placeholder="Enter a Word for Resume Command" value="Yellow"/>
+			</li>			
+			<li class="style__list-item">
+				<label for="pauseCommand">Pause</label>
+				<input id="pauseCommand" placeholder="Enter a Word for Pause Command" value="Red"/>
+			</li>	
+			<li class="style__list-item">
+				<button id="saveVoiceCommands" onclick="saveVoiceCommands()" class="button-xl" title="Save Voice Commands"> Save Commands </button>
+			</li>
 		</ul>
 	</nav>
 	<!--  drawer end -->
@@ -108,19 +128,25 @@
 
   	<!--  Dragable Controls Start -->
 	<div class="draggable" id="draggable">
-		<div id="myProgress">
-			<div id="myBar"> Detecting...</div>
+		<div id="progress">
+			<div id="progressBar"> Stopped...</div>
 		</div>
 		<div class="right">
 			<span class="response" id="response"></span>
-			<button id="start-button-right" class="button-xl" title="Start Teleprompter">
-			<i class="fa fa-microphone"></i> Start
+			<button id="turnOn-button-right" class="button-xl" title="Turn On Teleprompter">
+			 Turn On
+			</button>
+			<button id="start-button-right" class="button-xl" title="Start Teleprompter" onclick="startPrompter()" disabled>
+				<i class="fa fa-microphone"></i> Start
+			</button>
+			<button id="pause-button-right" class="button-xl" title="Pause Teleprompter" onclick="pausePrompter()" disabled>
+			 Pause
 			</button>
 			<button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
-			<i class="fa fa-microphone" ></i> Resume
+			</i> Resume
 			</button>
-			<button id="stop-button-right" class="button-xl" title="Stop Teleprompter" disabled="true"><i
-				class="fa fa-stop-circle"></i> Stop
+			<button id="stop-button-right" class="button-xl" title="Turn Off Teleprompter" disabled="true"><i
+				class="fa fa-stop-circle"></i> Turn Off
 			</button>
 			<hr>
 			<button id="start">Start camera</button>
@@ -146,7 +172,7 @@
 	<script src="lib/devices.js" async></script>
 	<script src="dist/main.js"></script>
 	<script src="lib/video.js"></script>
-	<script src="lib/ga.js"></script>
+	<!-- <script src="lib/ga.js"></script> -->
 	<script src="lib/drawer.js"></script>
 	<script src="lib/prompter.js"></script>
 	<script async defer src="https://buttons.github.io/buttons.js"></script>

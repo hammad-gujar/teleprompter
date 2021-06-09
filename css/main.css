@@ -65,9 +65,14 @@ video#gumVideo {
 }
 .spoken {
     color: #65656594;
+    transition:color 1s; 
+    -webkit-transition:color 1s;
+    overflow: hidden;
 }
 .highlite {
-    color: #ff8d00
+    color: #ff8d00;
+    transition:color 1s; 
+    -webkit-transition:color 1s;
 }
 input[type=text], select, textarea {
     width: 100%;
@@ -107,12 +112,12 @@ input[type=text], select, textarea {
   border-bottom: thick solid #d82121;
   width: 120px;
 }
-#myProgress {
+#progress {
   width: 120px;
   background-color: grey;
 }
 
-#myBar {
+#progressBar {
   width: 1%;
   height: 30px;
   background-color: green;
