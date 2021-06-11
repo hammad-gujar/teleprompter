@@ -103,7 +103,7 @@ input[type=text], select, textarea {
 .draggable {
 
   position: fixed;
-  top: 15%;
+  top: 5%;
   right: 0;
   cursor: move;
   cursor: grab;
