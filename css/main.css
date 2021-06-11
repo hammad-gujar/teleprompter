@@ -123,6 +123,12 @@ input[type=text], select, textarea {
   background-color: green;
 }
 
+#progressBarText {
+  width: 100%;
+  margin-top: -30px;
+  margin-left: 10%;
+}
+
 .right {
     background-color: #9eacaf;
     padding: 10px;
