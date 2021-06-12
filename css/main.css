@@ -26,26 +26,27 @@ p.borderBelow {
 }
 
 video {
-  vertical-align: top;
-  --width: 25vw;
+  /* vertical-align: top;
+  --width: 25vw; */
   width: 200px;
   height: calc(var(--width) * 0.5625);
 }
-
+/* 
 video:last-of-type {
   margin: 0 0 20px 0;
 }
 
 video#gumVideo {
   margin: 0 20px 20px 0;
-}
+} */
 
 .videoItem{
   top: 50px;
-  z-index: 99;
-  float: right;
+  /* z-index: 99; */
+  position: fixed;
+  /* float: right; */
   height: 120px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
 }
 
 .centered {
