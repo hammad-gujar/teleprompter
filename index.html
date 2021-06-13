@@ -4,11 +4,8 @@
 	<title>Teleprompter</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-	<link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
-	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-	<script src="https://www.webrtc-experiment.com/hark.js"></script>
 	<!-- Notifications -->
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
@@ -18,11 +15,15 @@
 	<link rel="stylesheet" href="./assets/css/OverlayScrollbars.min.css" />
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
 </head>
 <body>
 
+	<div class="draggableVideo" >
+		<video id="recorded" playsinline autoplay muted></video>
+	</div>
 	<!-- Start Modal -->
 	<div id="micModal" class="modal">
 		<!-- Modal content -->
@@ -116,10 +117,7 @@
 	</nav>
 	<!--  drawer end -->
 
-	<!-- <div class="draggable" >
-		<video id="recorded" playsinline autoplay muted></video>
-	</div> -->
-	<div class="container">
+	<div class="container" style="overflow: auto;">
 		<div class="centered" id = 'centered'>
 			<div>
 				<div id = 'scriptTextContainer' class="prompterStyling"></div>
@@ -133,21 +131,21 @@
 		<div id="progress">
 			<div id="progressBar">Off</div>
 		</div>
-		<div class="right">
+		<div class="controls">
 			<span class="response" id="response"></span>
-			<button id="turnOn-button-right" class="button-xl" title="Turn On Teleprompter">
+			<button id="turnOn-button" class="button-xl" title="Turn On Teleprompter">
 			 Turn On
 			</button>
-			<button id="start-button-right" class="button-xl" title="Start Teleprompter" onclick="startPrompter()" disabled>
+			<button id="start-button" class="button-xl" title="Start Teleprompter" onclick="startPrompter()" disabled>
 				<i class="fa fa-microphone"></i> Start
 			</button>
-			<button id="pause-button-right" class="button-xl" title="Pause Teleprompter" onclick="pausePrompter()" disabled>
+			<button id="pause-button" class="button-xl" title="Pause Teleprompter" onclick="pausePrompter()" disabled>
 			 Pause
 			</button>
-			<button id="resume-button-right" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
+			<button id="resume-button" class="button-xl" title="Resume Teleprompter" onclick="resumePrompter()" disabled>
 			</i> Resume
 			</button>
-			<button id="stop-button-right" class="button-xl" title="Turn Off Teleprompter" disabled="true"><i
+			<button id="stop-button" class="button-xl" title="Turn Off Teleprompter" disabled="true"><i
 				class="fa fa-stop-circle"></i> Turn Off
 			</button>
 			<hr>
@@ -169,17 +167,14 @@
 	</div>
 
   <!--  Dragable Controls End -->
-
-	<script src="lib/adapter.js"></script>
+  
 	<script src="lib/devices.js" async></script>
 	<script src="dist/main.js"></script>
 	<script src="lib/video.js"></script>
-	<!-- <script src="lib/ga.js"></script> -->
 	<script src="lib/drawer.js"></script>
 	<script src="lib/prompter.js"></script>
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.1/dist/simple-notify.min.js"></script>
-	<!-- <script src="../dist/simple-notify.min.js"></script> -->
 	<script src="./assets/js/prism.js"></script>
 	<script src="./assets/js/OverlayScrollbars.min.js"></script>
 </body>

@@ -130,7 +130,7 @@ input[type=text], select, textarea {
   margin-left: 10%;
 }
 
-.right {
+.controls {
     background-color: #9eacaf;
     padding: 10px;
   }
@@ -276,7 +276,19 @@ li {
 /* drawer end */
 
 
-/* progress Bar */
+.draggableVideo {
 
+  position: fixed;
+  top: 5%;
+  left: 0;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+#p
 
-/* progress bar end */
+#start-button,
+#stop-button {
+    margin: 5px 0;
+}
