@@ -16,4 +16,4 @@ Follow the steps to setup on server.
 - start web server using the command `ws`
 
 # Live Demo
-Live demo is deployed at https://main.d5rz2x90wsldd.amplifyapp.com/
+Live demo is deployed at https://main.d18ej4bfkwauvq.amplifyapp.com/
