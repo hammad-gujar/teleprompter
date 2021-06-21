@@ -6,7 +6,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-	<!-- Notifications -->
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" href="./assets/css/prism.css" />
@@ -28,10 +27,13 @@
 	<div id="micModal" class="modal">
 		<!-- Modal content -->
 		<div class="modal-content">
-			<span class="close">&times;</span>    
+			<span class="close">&times;</span>
 			<label for="audioSource">Please Select Audio Input Source: </label>
 			<select id="audioSource"></select>
-			<button id="saveMicPrefrences" onclick="saveMicPrefrences()" class="button-xl" title="Save Prefrences"> Save </button>
+			
+			<label for="videoSource">Please Select Video Input Source: </label>
+			<select id="videoSource"></select>
+			<button id="saveInputDevicesPrefrences" onclick="saveInputDevicesPrefrences()" class="button-xl" title="Save Prefrences"> Save </button>
 		</div>
 	</div>
 	<!--End Modal -->
@@ -168,8 +170,8 @@
 
   <!--  Dragable Controls End -->
   
-	<script src="lib/devices.js" async></script>
 	<script src="dist/main.js"></script>
+	<script src="lib/fix-webm-duration.js"></script>
 	<script src="lib/video.js"></script>
 	<script src="lib/drawer.js"></script>
 	<script src="lib/prompter.js"></script>
