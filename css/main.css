@@ -99,6 +99,11 @@ input[type=text], select, textarea {
   font-size: 50px;
   border-radius: 10px;
 }
+#responseSection {
+  width: 220px;
+  right: 50%;
+  top: 0;
+}
 
 /*Controll Bar*/
 .draggable {
@@ -262,6 +267,9 @@ section:nth-of-type(odd) {
 .style__list {
   list-style-type: none;
 }
+.style__list-item {
+  margin-top: 10%;
+}
 hr {
   border: none;
   height: 1px;
@@ -271,7 +279,6 @@ hr {
   margin: 5px;
 }
 li {
-  margin-top: 10%;
 }
 /* drawer end */
 

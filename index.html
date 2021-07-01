@@ -33,7 +33,86 @@
 			
 			<label for="videoSource">Please Select Video Input Source: </label>
 			<select id="videoSource"></select>
-			<button id="saveInputDevicesPrefrences" onclick="saveInputDevicesPrefrences()" class="button-xl" title="Save Prefrences"> Save </button>
+			<button id="saveInputDevicesPrefrences" onclick="saveInputDevicesPrefrences('micModal')" class="button-xl" title="Save Prefrences"> Save </button>
+		</div>
+	</div>
+	
+	<div id="howToModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span style="color: hsl(216deg 51% 52%);"><h3>Control Bar Buttons Working</h3></span>
+			<ul>
+				<li>
+					<b>Turn On Mic:</b> Press this button to turn on mic of Teleprompter. After Pressing this button, Teleprompter will start listening. Teleprompter will also start taking the voice commands once the mic is on.
+				</li>
+				<li>
+					<b>Start:</b> Press this button to start Teleprompter. Press this button and then start speaking the Teleprompter text. You can also give the predefined voice command to start.
+				</li>
+				<li>
+					<b>Pause:</b> Press this button to pause the Teleprompter. Teleprompter not be working anymore. By default, after 15 seconds of inactivity, Teleprompter will automatically paused. You can also give the predefined voice command to pause the Teleprompter.
+				</li>
+				<li>
+					<b>Reumse:</b> Press this button to resume the Teleprompter. If Teleprompter is in paused state, by press Resume button, It will resume working. You can also give the predefined voice command to resume the Teleprompter.
+				</li>
+				<li>
+					<b>Turn Off Mic:</b> Press this button to turn off mic of the Teleprompter. By pressing this button, Mic of the Teleprompter will be turned off and it will not be working anymore.
+				</li>
+				<hr>
+				<li>
+					<b>Start Camera:</b> Click This button and turn on the camera for video recording.
+				</li>
+				<li>
+					<b>Start Recording:</b> Click this button to start video recording.
+				</li>
+				<li>
+					<b>Play:</b> Click this button to play the recorded video in browser.
+				</li>
+				<li>
+					<b>Download:</b> Click this button to download the recorded video.
+				</li>
+				<hr>
+				<li>
+					<b>Save Script:</b> Enter the text in the text area and press Save Script Button to display the text on Teleprompter screen.
+				</li>
+				<li>
+					<b>Clear Script:</b> Clear the text from the screen of Teleprompter.
+				</li>
+				<li>
+					<b>Reset Teleprompter:</b> Click this button to reset the Teleprompter and start Teleprompter text from the beginning
+				</li>
+				<hr>
+				<li>
+					<b>Prompter Configurations:</b> Click this button to open the drawer for prompter configurations. This section is explained in below.
+				</li>
+			</ul>
+
+			<span style="color: hsl(216deg 51% 52%);"><h3>Prompter Configurations</h3></span>
+			<ul>
+				<li>
+					<b>Close Button:</b> By clicking this button, configuration drawer will be closed.
+				</li>
+				<li>
+					<b>Show Mic and Camera Option:</b> By clicking this button, popup will open to select the camera and mic prefrences. Once you saved the prefrences, Teleprompter will always use the preffered input devices.
+				</li>
+				<li>
+					<b>Font Size:</b> Adjust the font size of Teleprompter text.
+				</li>
+				<li>
+					<b>Width:</b> Adjust the width of Teleprompter text.
+				</li>
+				<li>
+					<b>Text Color:</b> Adjust the color of Teleprompter text.
+				</li>
+				<li>
+					<b>Text Backgroud Color:</b> Adjust the backgroud color of Teleprompter text.
+				</li>
+				<hr>				
+				<li>
+					<b>Voice Commands Words:</b> Set the words for voice commands to Start, Resume, and Pause Teleprompter.
+				</li>
+			</ul>
+			<button id="howToModal" onclick="closeModal('howToModal')" class="button-xl" title="Close Modal"> Close </button>
+		
 		</div>
 	</div>
 	<!--End Modal -->
@@ -47,7 +126,7 @@
 		<hr>
 		<ul class="style__list">
 			<li class="style__list-item">
-				<button id="openMicPrefrences" style = "width: 70%;" onclick="openMicModal()" class="button-xl" title="Change Microphone Prefrences">Show Mic Options</button>
+				<button id="openMicPrefrences" style = "width: 70%;" onclick="openModal('micModal')" class="button-xl" title="Change Microphone Prefrences">Show Mic and Camera Options</button>
 			</li>
 			<li class="style__list-item">
 				<label for="fontSizeLbl">Font Size</label>
@@ -77,12 +156,23 @@
 			<li class="style__list-item">
 				<label for="textColor">Text Color</label>
 				<select name="textColor" id="textColor" onchange="changeTextColor('textColor')">
-					<option value="default">Default</option>
+					<option value="#4a4a4a">Default</option>
 					<option value="White">White</option>
 					<option value="Black">Black</option>
 					<option value="Green">Green</option>
 					<option value="Cyan">Cyan</option>
 					<option value="Blue">Blue</option>
+				</select>
+			</li>
+			<li class="style__list-item">
+				<label for="higlightedTextColor">Higlighted Text Color</label>
+				<select name="higlightedTextColor" id="higlightedTextColor" onchange="changeHiglightedTextColor('higlightedTextColor')">
+					<option value="#ff8d00">Default</option>
+					<option value="#8B0000">Dark Red</option>
+					<option value="#A57164">Bronze</option>
+					<option value="#B0BF1A">Acid Green</option>
+					<option value="#FF1493">Pink</option>
+					<option value="#6699CC">Blue</option>
 				</select>
 			</li>
 			<li class="style__list-item">
@@ -128,17 +218,20 @@
 		</div>
 	</div>
 
+	<div class="draggable" id="responseSection">
+		<span class="response" id="response">00:00:00 | Teleprompters is Off</span>
+	</div>
+
   	<!--  Dragable Controls Start -->
 	<div class="draggable" id="draggable">
 		<div id="progress">
 			<div id="progressBar">Off</div>
 		</div>
 		<div class="controls">
-			<span class="response" id="response"></span>
 			<button id="turnOn-button" class="button-xl" title="Turn On Teleprompter">
-			 Turn On
+			 Turn On Mic
 			</button>
-			<button id="start-button" class="button-xl" title="Start Teleprompter" onclick="startPrompter()" disabled>
+			<button id="start-button" class="button-xl" title="Click and Start Reading the Text" onclick="startPrompter()" disabled>
 				<i class="fa fa-microphone"></i> Start
 			</button>
 			<button id="pause-button" class="button-xl" title="Pause Teleprompter" onclick="pausePrompter()" disabled>
@@ -148,7 +241,7 @@
 			</i> Resume
 			</button>
 			<button id="stop-button" class="button-xl" title="Turn Off Teleprompter" disabled="true"><i
-				class="fa fa-stop-circle"></i> Turn Off
+				class="fa fa-stop-circle"></i> Turn Off Mic
 			</button>
 			<hr>
 			<button id="start">Start camera</button>
@@ -162,6 +255,10 @@
 			<hr>
 			<button rel='menu-toggle'>
 			Prompter Configurations
+			</button>
+			<hr>
+			<button onclick="showHowTo('howToModal')">
+			How To
 			</button>
 			<hr>
 			<span class="statusMessage" id="statusMessage">Stopped</span>
