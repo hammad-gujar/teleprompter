@@ -71,7 +71,6 @@ video#gumVideo {
     overflow: hidden;
 }
 .highlite {
-    color: #ff8d00;
     transition:color 1s; 
     -webkit-transition:color 1s;
 }
