@@ -36,6 +36,18 @@
 			<button id="saveInputDevicesPrefrences" onclick="saveInputDevicesPrefrences('micModal')" class="button-xl" title="Save Prefrences"> Save </button>
 		</div>
 	</div>
+
+	
+	<div id="statesModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div id='statesTable'>
+
+			</div>
+			<button id="statesModalClose" onclick="closeModal('statesModal')" class="button-xl" title="Close Modal"> Close </button>
+			<button id="statesTransitionsClear" onclick="clearStateTransitions()" class="button-xl" title="Clear all saved states"> Clear States </button>
+		</div>
+	</div>
 	
 	<div id="howToModal" class="modal">
 		<!-- Modal content -->
@@ -257,8 +269,12 @@
 			Prompter Configurations
 			</button>
 			<hr>
-			<button onclick="showHowTo('howToModal')">
+			<button onclick="openModal('howToModal')">
 			How To
+			</button>
+			<hr>
+			<button onclick="openStatesModal('statesModal')">
+			State Transitions Chart
 			</button>
 			<hr>
 			<span class="statusMessage" id="statusMessage">Stopped</span>
