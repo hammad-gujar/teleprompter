@@ -74,6 +74,11 @@ video#gumVideo {
     transition:color 1s; 
     -webkit-transition:color 1s;
 }
+.highliteMiddle {
+    color: blue;
+    transition:color 1s; 
+    -webkit-transition:color 1s;
+}
 input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
