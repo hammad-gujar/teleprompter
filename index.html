@@ -165,6 +165,18 @@
 					<option value="serif">serif</option>
 				</select>
 			</li>
+			<li class="style__list-item">				
+				<label for="scrollSpeed">Scroll Speed</label>
+				<input id="scrollSpeed" onchange="isValidScrollSpeed()" placeholder="Speed in Number i.e. 5" value="5"/>
+			</li>
+			<li class="style__list-item">
+				<input type="checkbox" id="autoPause" onclick='handleAutoPause();'>
+				<label for="autoPause"> Auto Pause</label><br>
+			</li>
+			<li id = 'autoPauseTimeEl' style="display: none;">				
+				<label for="autoPauseTime">Auto Pause Time (Seconds)</label>
+				<input id="autoPauseTime" onchange="isValidPauseTime()" placeholder="Enter Time in Seconds" value="15"/>
+			</li>
 			<li class="style__list-item">
 				<label for="textColor">Text Color</label>
 				<select name="textColor" id="textColor" onchange="changeTextColor('textColor')">
@@ -177,7 +189,7 @@
 				</select>
 			</li>
 			<li class="style__list-item">
-				<label for="higlightedTextColor">Higlighted Text Color</label>
+				<label for="higlightedTextColor">Boundry Highlight Text Color</label>
 				<select name="higlightedTextColor" id="higlightedTextColor" onchange="changeHiglightedTextColor('higlightedTextColor')">
 					<option value="#ff8d00">Default</option>
 					<option value="#8B0000">Dark Red</option>
@@ -188,7 +200,7 @@
 				</select>
 			</li>
 			<li class="style__list-item">
-				<label for="higlightedTextMiddleColor">Higlighted Text Middle Color</label>
+				<label for="higlightedTextMiddleColor">Target Area Highlight Color</label>
 				<select name="higlightedTextMiddleColor" id="higlightedTextMiddleColor" onchange="changeHiglightedTextMiddleColor('higlightedTextMiddleColor')">
 					<option value="#c7c20c">Default</option>
 					<option value="#8B0000">Dark Red</option>
