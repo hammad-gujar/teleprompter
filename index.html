@@ -140,6 +140,28 @@
 			<li class="style__list-item">
 				<button id="openMicPrefrences" style = "width: 70%;" onclick="openModal('micModal')" class="button-xl" title="Change Microphone Prefrences">Show Mic and Camera Options</button>
 			</li>
+			<hr>
+			<h4>Amazon Transcriber Configurations</h4>
+			<li class="style__list-item">
+				<div>				
+					<label for="accessKey">Access Key ID</label>
+					<input type="password" id="accessKey" onchange="SaveAccessKey()" placeholder="Enter Access Key of Amazon Transcriber"/>						
+				</div>
+			</li>
+			<li class="style__list-item">
+				<div>				
+					<label for="secretKey">Secret Access Key</label>
+					<input type="password" id="secretKey" onchange="SaveSecretKey()" placeholder="Enter Secret Access Key of Amazon Transcriber"/>						
+				</div>
+			</li>
+			<li class="style__list-item">
+				<label for="clearKeysLbl">Clear Credentials</label>
+				<div>
+					<button id="clearKeys" onclick="clearKeys()" class="button-xl" title="Clear"> Clear </button>
+				</div>
+			</li>
+			<hr>
+			<h4>Prompter Configurations</h4>
 			<li class="style__list-item">
 				<label for="fontSizeLbl">Font Size</label>
 				<div>
